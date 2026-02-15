@@ -25,6 +25,8 @@ extern void U3CLoadYourAsyncSceneU3Ed__1_System_Collections_IEnumerator_Reset_mC
 extern void U3CLoadYourAsyncSceneU3Ed__1_System_Collections_IEnumerator_get_Current_m54A261892DC0C5C3C611A47CF088438B8577695E (void);
 extern void QuitGame_OnClick_m7AAB394FE038EC520BE18BEFB0E200BE1EE10343 (void);
 extern void QuitGame__ctor_m33EF586CADC312B694613ABE4EC72575701B4CE9 (void);
+extern void RestartGame_OnClick_mEB6A062B35B156A8E1CF0D1BA58A5876461A5D7F (void);
+extern void RestartGame__ctor_mCB41AD30019F6119CD289D7796029CC52E35FC87 (void);
 extern void ReturnToMenu_OnClick_m6D7A7EE6B45A1DCFE190A0F9065BFEBAB69C0936 (void);
 extern void ReturnToMenu__ctor_mAE38D6A2DAD60BF8CC17801535BEBD1DA6C33B56 (void);
 extern void StartGame_OnClick_mC63CBE08D210D418382D6D180441425A79777292 (void);
@@ -40,6 +42,7 @@ extern void QuestionSetup_SetAnswerValues_mC53EA4CB0EB26550028EAC1C46FEA64F0A746
 extern void QuestionSetup_RandomizeAnswers_mF9436875D3F0133B32FBAFD62DF60FF654A48833 (void);
 extern void QuestionSetup__ctor_mB73324F043E317A3A8448FCF55B362188DB92863 (void);
 extern void RandomSpawn_Start_m3E3C294EF7A6BB2FB2ADF730930AB467494D864A (void);
+extern void RandomSpawn_OnClick_mF7307D45E03273B1B59DF4C45E4E49B4F57B1B9E (void);
 extern void RandomSpawn__ctor_m600F23D5A7B3254C244A235456F295827C61665A (void);
 extern void SetAnchorAtStart_Start_m9697E066514573895CBA248089CE0F2298DD380C (void);
 extern void SetAnchorAtStart__ctor_mCCDC3FA8E3DB9FE2306F8D7F9F59068F39384022 (void);
@@ -135,7 +138,7 @@ extern void U3CWaitUntilNextCardU3Ed__36_MoveNext_mEB6BA70FAED1CFCFF4A723EA3EAB8
 extern void U3CWaitUntilNextCardU3Ed__36_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mDB2315FB1F67F06B37604285AD8F003E282D1607 (void);
 extern void U3CWaitUntilNextCardU3Ed__36_System_Collections_IEnumerator_Reset_m5E5CC9DFDC8C17DB423A7C7ECBCD4342A7754633 (void);
 extern void U3CWaitUntilNextCardU3Ed__36_System_Collections_IEnumerator_get_Current_mE7D77BA338B271D9E95117683B19436CFFF37229 (void);
-static Il2CppMethodPointer s_methodPointers[128] = 
+static Il2CppMethodPointer s_methodPointers[131] = 
 {
 	AnswerButton_SetAnswerText_m52E83EFA95C22D414889294E29E5B98611BF8E9E,
 	AnswerButton_SetIsCorrect_mC22F4A8DA36DD1C204305182E6868E4EA28D421E,
@@ -155,6 +158,8 @@ static Il2CppMethodPointer s_methodPointers[128] =
 	U3CLoadYourAsyncSceneU3Ed__1_System_Collections_IEnumerator_get_Current_m54A261892DC0C5C3C611A47CF088438B8577695E,
 	QuitGame_OnClick_m7AAB394FE038EC520BE18BEFB0E200BE1EE10343,
 	QuitGame__ctor_m33EF586CADC312B694613ABE4EC72575701B4CE9,
+	RestartGame_OnClick_mEB6A062B35B156A8E1CF0D1BA58A5876461A5D7F,
+	RestartGame__ctor_mCB41AD30019F6119CD289D7796029CC52E35FC87,
 	ReturnToMenu_OnClick_m6D7A7EE6B45A1DCFE190A0F9065BFEBAB69C0936,
 	ReturnToMenu__ctor_mAE38D6A2DAD60BF8CC17801535BEBD1DA6C33B56,
 	StartGame_OnClick_mC63CBE08D210D418382D6D180441425A79777292,
@@ -170,6 +175,7 @@ static Il2CppMethodPointer s_methodPointers[128] =
 	QuestionSetup_RandomizeAnswers_mF9436875D3F0133B32FBAFD62DF60FF654A48833,
 	QuestionSetup__ctor_mB73324F043E317A3A8448FCF55B362188DB92863,
 	RandomSpawn_Start_m3E3C294EF7A6BB2FB2ADF730930AB467494D864A,
+	RandomSpawn_OnClick_mF7307D45E03273B1B59DF4C45E4E49B4F57B1B9E,
 	RandomSpawn__ctor_m600F23D5A7B3254C244A235456F295827C61665A,
 	SetAnchorAtStart_Start_m9697E066514573895CBA248089CE0F2298DD380C,
 	SetAnchorAtStart__ctor_mCCDC3FA8E3DB9FE2306F8D7F9F59068F39384022,
@@ -269,9 +275,9 @@ static Il2CppMethodPointer s_methodPointers[128] =
 extern void Goal__ctor_m4452076EE88E564D97BBDD12E7011CAF34E275A3_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
-	{ 0x06000065, Goal__ctor_m4452076EE88E564D97BBDD12E7011CAF34E275A3_AdjustorThunk },
+	{ 0x06000068, Goal__ctor_m4452076EE88E564D97BBDD12E7011CAF34E275A3_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[128] = 
+static const int32_t s_InvokerIndices[131] = 
 {
 	11629,
 	11435,
@@ -303,7 +309,10 @@ static const int32_t s_InvokerIndices[128] =
 	15322,
 	15322,
 	15322,
+	15322,
+	15322,
 	9966,
+	15322,
 	15322,
 	15322,
 	15322,
@@ -406,7 +415,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	128,
+	131,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,
