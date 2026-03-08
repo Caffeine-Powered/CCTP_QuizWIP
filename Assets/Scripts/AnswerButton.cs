@@ -29,7 +29,7 @@ public class AnswerButton : MonoBehaviour
     {
         if(isCorrect)
         {
-            Score ++;
+            Score = Score + 1;
             Debug.Log("CORRECT ANSWER " + Score);
 
         }

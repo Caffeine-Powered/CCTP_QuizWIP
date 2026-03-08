@@ -6,6 +6,8 @@ using System.Collections;
 public class GetData : MonoBehaviour
 {
     public string DataURL;
+    public int numOfQuestions;
+    public GameObject prefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,8 +37,18 @@ public class GetData : MonoBehaviour
     {
         JSONNode node = JSON.Parse(jsonString);
         JSONObject obj = node.AsObject;
-        Debug.Log(obj["Questions"].Count);
-        var newQuestion = (obj["Questions"][0]["Question"]);
-        Debug.Log(newQuestion);
+
+        
+        numOfQuestions = (obj["Questions"].Count);
+        Debug.Log("Number of Questions " + numOfQuestions);
+
+        for (var i = 0; i < numOfQuestions; i ++)
+        {
+            Instantiate(prefab, new Vector3(0,0,0),Quaternion.identity);
+        }
+        Debug.Log("Spawned: " + numOfQuestions +" models");
+        //Debug.Log(obj["Questions"].Count);
+        //var newQuestion = (obj["Questions"][0]["Question"]);
+        //Debug.Log(newQuestion);
      }
 }

@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
+  Score: 0
   isCorrect: 0
   answerText: {fileID: 1618298280}
   questionSetup: {fileID: 1631301745}
@@ -1690,6 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
+  Score: 0
   isCorrect: 0
   answerText: {fileID: 1900608721}
   questionSetup: {fileID: 1631301745}
@@ -2326,6 +2328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetData
   DataURL: https://script.google.com/macros/s/AKfycbyDap0Z13TbUrVcRKuiYrQaDOyCSdVqYcJNf9epbh02hRfJ4o2lsypj7ZWhQwJQk2zKFA/exec
+  numOfQuestions: 0
+  prefab: {fileID: 2439338013632997020, guid: 8db582b0553c0d64587971a4bc51cd73, type: 3}
 --- !u!4 &889152090
 Transform:
   m_ObjectHideFlags: 0
@@ -3210,6 +3214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
+  Score: 0
   isCorrect: 0
   answerText: {fileID: 381229715}
   questionSetup: {fileID: 1631301745}
@@ -4298,6 +4303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
+  Score: 0
   isCorrect: 0
   answerText: {fileID: 1719427615}
   questionSetup: {fileID: 1631301745}
