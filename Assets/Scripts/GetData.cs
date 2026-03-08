@@ -26,7 +26,17 @@ public class GetData : MonoBehaviour
             {
                 string json = request.downloadHandler.text;
                 Debug.Log(json);
+                ReadJSON(json);
             }
         }
     }
+
+           void ReadJSON(string jsonString)
+    {
+        JSONNode node = JSON.Parse(jsonString);
+        JSONObject obj = node.AsObject;
+        Debug.Log(obj["Questions"].Count);
+        var newQuestion = (obj["Questions"][0]["Question"]);
+        Debug.Log(newQuestion);
+     }
 }

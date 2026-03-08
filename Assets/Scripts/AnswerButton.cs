@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class AnswerButton : MonoBehaviour
 {
+    public int Score = 0;
     public bool isCorrect;
     [SerializeField] public TextMeshProUGUI answerText;
 
@@ -28,7 +29,9 @@ public class AnswerButton : MonoBehaviour
     {
         if(isCorrect)
         {
-            Debug.Log("CORRECT ANSWER");
+            Score ++;
+            Debug.Log("CORRECT ANSWER " + Score);
+
         }
         else
         {
@@ -41,8 +44,8 @@ public class AnswerButton : MonoBehaviour
         }   
         else
         {
-
-            SceneManager.LoadSceneAsync(1);
+            Debug.Log("NO MORE QUESTIONS");
+            //SceneManager.LoadSceneAsync(1);
         }
     }
     

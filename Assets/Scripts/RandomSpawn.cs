@@ -28,7 +28,7 @@ void Start()
 
 public void OnClick()
 {
-    Debug.Log("MOVED");
+    //Debug.Log("MOVED");
     Start();
 }
 
