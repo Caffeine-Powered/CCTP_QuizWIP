@@ -30,7 +30,7 @@ public class AnswerButton : MonoBehaviour
         if(isCorrect)
         {
             Score = Score + 1;
-            Debug.Log("CORRECT ANSWER " + Score);
+            //Debug.Log("CORRECT ANSWER " + Score);
 
         }
         else
@@ -45,7 +45,8 @@ public class AnswerButton : MonoBehaviour
         else
         {
             Debug.Log("NO MORE QUESTIONS");
-            //SceneManager.LoadSceneAsync(1);
+            Debug.Log(Score);
+            //SceneManager.LoadSceneAsync(0);
         }
     }
     
