@@ -51,7 +51,7 @@ public class AnswerButton : MonoBehaviour
         else
         {
             Debug.Log("NO MORE QUESTIONS");
-            //SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync(2);
         }
     }
     
