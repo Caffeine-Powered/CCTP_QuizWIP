@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4255914f51a20ac40a5406c2292a9e16, type: 3}
   m_Name: Test 1
   m_EditorClassIdentifier: Assembly-CSharp::QuestionData
-  question: Question 3
-  category: English
+  question: sadas
+  category: dasd
   answers:
   - Correct
   - Wrong

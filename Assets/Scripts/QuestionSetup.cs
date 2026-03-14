@@ -7,6 +7,7 @@ using TMPro;
 
 public class QuestionSetup : MonoBehaviour
 {
+
     [SerializeField]
     public List<QuestionData> questions;
     public QuestionData currentQuestion;
@@ -83,6 +84,7 @@ public class QuestionSetup : MonoBehaviour
             if(i == correctAnswerChoice)
             {
                 isCorrect = true;
+                
             }
 
             answerButtons[i].SetIsCorrect(isCorrect);

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - Answer_Obj
+  - Score
   layers:
   - Default
   - TransparentFX

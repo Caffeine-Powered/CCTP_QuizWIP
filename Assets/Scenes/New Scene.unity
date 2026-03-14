@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &136273192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 136273195}
+  - component: {fileID: 136273194}
+  m_Layer: 0
+  m_Name: ScoreKeeper
+  m_TagString: Score
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &136273194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136273192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71589a50ca8a18a40b354f07d54e53e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scoreboard
+  currentScore: 0
+--- !u!4 &136273195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136273192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24456, y: 0, z: -0.94459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &186431335
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
-  Score: 0
   isCorrect: 0
   answerText: {fileID: 1618298280}
   questionSetup: {fileID: 1631301745}
@@ -1691,7 +1735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
-  Score: 0
   isCorrect: 0
   answerText: {fileID: 1900608721}
   questionSetup: {fileID: 1631301745}
@@ -2329,7 +2372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GetData
   DataURL: https://script.google.com/macros/s/AKfycbyDap0Z13TbUrVcRKuiYrQaDOyCSdVqYcJNf9epbh02hRfJ4o2lsypj7ZWhQwJQk2zKFA/exec
   numOfQuestions: 0
-  prefab: {fileID: 2439338013632997020, guid: 8db582b0553c0d64587971a4bc51cd73, type: 3}
 --- !u!4 &889152090
 Transform:
   m_ObjectHideFlags: 0
@@ -3214,7 +3256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
-  Score: 0
   isCorrect: 0
   answerText: {fileID: 381229715}
   questionSetup: {fileID: 1631301745}
@@ -4303,7 +4344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd6753b9a98a24eb7ed3f793ad7df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnswerButton
-  Score: 0
   isCorrect: 0
   answerText: {fileID: 1719427615}
   questionSetup: {fileID: 1631301745}
@@ -5106,8 +5146,9 @@ SceneRoots:
   - {fileID: 1525463549}
   - {fileID: 787859542}
   - {fileID: 1454671627}
-  - {fileID: 889152090}
   - {fileID: 1392826980379815497}
   - {fileID: 1471750119}
   - {fileID: 597544019}
   - {fileID: 482408908}
+  - {fileID: 136273195}
+  - {fileID: 889152090}

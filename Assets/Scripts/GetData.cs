@@ -38,20 +38,21 @@ public class GetData : MonoBehaviour
         JSONNode node = JSON.Parse(jsonString);
         JSONObject obj = node.AsObject;
 
-       
-
         numOfQuestions = (obj["Questions"].Count);
-        //Debug.Log("Number of Questions " + numOfQuestions);
-
-        Debug.Log(obj["Questions"][0]);
-        Debug.Log(obj["Questions"][1]);
-        Debug.Log(obj["Questions"][2]);
+        
 
 
+        for (int i = 0 ; i < numOfQuestions; i++)
+        {
+            Debug.Log(i);
 
+        }
+        
 
-        //Debug.Log(obj["Questions"].Count);
-        //var newQuestion = (obj["Questions"][0]["Question"]);
-        //Debug.Log(newQuestion);
+        //Debug.Log(obj["Questions"][0]);
+        //Debug.Log(obj["Questions"][1]);
+        //Debug.Log(obj["Questions"][2]);
+
+    
      }
 }

@@ -6,14 +6,21 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+
 public class AnswerButton : MonoBehaviour
 {
-    public int Score = 0;
+    
+
     public bool isCorrect;
     [SerializeField] public TextMeshProUGUI answerText;
 
     [SerializeField] private QuestionSetup questionSetup;
+    Scoreboard scoreboardUpdate;
 
+    void Start()
+    {
+        scoreboardUpdate = GameObject.FindGameObjectWithTag("Score").GetComponent<Scoreboard>();
+    }
 
     public void SetAnswerText(string newText)
     {
@@ -29,9 +36,8 @@ public class AnswerButton : MonoBehaviour
     {
         if(isCorrect)
         {
-            Score = Score + 1;
-            //Debug.Log("CORRECT ANSWER " + Score);
-
+            Debug.Log("CORRECT ANSWER");
+            scoreboardUpdate.UpdateScore();
         }
         else
         {
@@ -45,7 +51,6 @@ public class AnswerButton : MonoBehaviour
         else
         {
             Debug.Log("NO MORE QUESTIONS");
-            Debug.Log(Score);
             //SceneManager.LoadSceneAsync(0);
         }
     }
