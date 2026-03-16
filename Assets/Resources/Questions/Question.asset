@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4255914f51a20ac40a5406c2292a9e16, type: 3}
-  m_Name: QuestionData
+  m_Name: Question
   m_EditorClassIdentifier: Assembly-CSharp::QuestionData
-  question: Question 1
-  category: English
+  question: 1
+  category: 2
   answers:
-  - CORRECT
+  - Correct
   - Wrong
   - Wrong
   - Wrong

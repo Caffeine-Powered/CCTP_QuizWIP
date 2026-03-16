@@ -8,7 +8,7 @@ public class StartGame : MonoBehaviour
 
      public void OnClick()
     {
-        SceneManager.LoadScene("New Scene");
+        SceneManager.LoadSceneAsync(1);
     }
 
 

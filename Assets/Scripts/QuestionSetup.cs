@@ -27,9 +27,9 @@ public class QuestionSetup : MonoBehaviour
         // Get all the questions ready
         GetQuestionAssets();
     }
-
+    
     // Start is called before the first frame update
-    public void Start()
+    public void Cycle()
     {
         //Get a new question
         SelectNewQuestion();
@@ -49,6 +49,12 @@ public class QuestionSetup : MonoBehaviour
     {
         // Get all of the questions from the questions folder
         questions = new List<QuestionData>(Resources.LoadAll<QuestionData>("Questions"));
+        Debug.Log("questions: ");
+        foreach (QuestionData obj in questions)
+        {
+            Debug.Log(JsonUtility.ToJson(obj, true));
+        }
+        Debug.Log(questions);
     }
 
     public void SelectNewQuestion()

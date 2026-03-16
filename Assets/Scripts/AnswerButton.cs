@@ -46,12 +46,12 @@ public class AnswerButton : MonoBehaviour
         if (questionSetup.questions.Count > 0)
         {
             // Generate a new question
-            questionSetup.Start();
+            questionSetup.Cycle();
         }   
         else
         {
             Debug.Log("NO MORE QUESTIONS");
-            SceneManager.LoadSceneAsync(2);
+            //SceneManager.LoadSceneAsync(2);
         }
     }
     

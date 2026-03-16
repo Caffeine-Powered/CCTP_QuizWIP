@@ -7,11 +7,13 @@ public class GetData : MonoBehaviour
 {
     public string DataURL;
     public int numOfQuestions;
-    
+    public QuestionSetup questionSetup;
+    public AnswerButton answerButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(getData());
+        Debug.Log("Start");
     }
 
     IEnumerator getData()
@@ -28,17 +30,22 @@ public class GetData : MonoBehaviour
             {
                 string json = request.downloadHandler.text;
                 Debug.Log(json);
+                //JsonData = json; 
                 ReadJSON(json);
+
+
+                questionSetup.GetQuestionAssets();
+                questionSetup.Cycle();
             }
         }
     }
 
-           void ReadJSON(string jsonString)
+    void ReadJSON(string jsonString) //this inside of questiondata
     {
         JSONNode node = JSON.Parse(jsonString);
         JSONObject obj = node.AsObject;
-
-        numOfQuestions = (obj["Questions"].Count);
+    
+    /**    numOfQuestions = (obj["Questions"].Count);
         
 
 
@@ -53,6 +60,6 @@ public class GetData : MonoBehaviour
         //Debug.Log(obj["Questions"][1]);
         //Debug.Log(obj["Questions"][2]);
 
-    
+    **/
      }
 }
