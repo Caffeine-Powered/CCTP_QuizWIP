@@ -71,7 +71,7 @@ public class GetData : MonoBehaviour
             GameObject myText = Instantiate(correctQText, position, Quaternion.identity);
             TextMeshPro textComponent = myText.GetComponent<TextMeshPro>();
             textComponent.text = correctAnswer;
-            
+             Debug.Log(position);
 
         }
      }
