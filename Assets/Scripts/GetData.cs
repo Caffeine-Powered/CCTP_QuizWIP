@@ -69,7 +69,7 @@ void ReadJSON(string jsonString)
         switch (txtcounter)
         {
             case 0:
-                textComponent.text = correctAnswer;
+                textComponent.text = correctAnswer; //if can add tag can have onclick event apply to this
                 break;
             case 1:
                 textComponent.text = wrongAnswer1;

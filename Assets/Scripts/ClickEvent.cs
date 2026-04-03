@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class ClickEvent : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject[] cObject;
+    public GameObject[] objects;
+    public void OnClick()
     {
+        objects = GameObject.FindGameObjectsWithTag("QuestionBox");
+            foreach(GameObject obj in objects)
+            {
+                Destroy(obj);
+            }
+        cObject = GameObject.FindGameObjectsWithTag("CorrectAnswer");
+            foreach(GameObject obj in cObject)
+            {
+                Destroy(obj);
+            }
         
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
