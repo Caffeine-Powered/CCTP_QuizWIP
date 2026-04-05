@@ -12,9 +12,10 @@ public class GetData : MonoBehaviour
     public int numOfAnswers;
     public GameObject QText;
     public GameObject[] answersInstances;
-    private int currentQuestion;
+    public int currentQuestion;
     private int counter;
     private int txtcounter;
+    public string jsonString;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,95 +46,50 @@ public class GetData : MonoBehaviour
         }
     }
 
-void ReadJSON(string jsonString) 
-{
-    JSONNode node = JSON.Parse(jsonString);
-    JSONObject obj = node.AsObject;
-    
-    numOfQuestions = (obj["Questions"].Count);
-    Debug.Log(numOfQuestions);
-    numOfAnswers = (obj["Questions"][currentQuestion].Count - 1);
-    Debug.Log("num of answers " + numOfAnswers );
-
-    for (int a = 0; a < numOfAnswers; a++)
+    public void ReadJSON(string jsonString) 
     {
-        string correctAnswer = obj["Questions"][currentQuestion]["Correct Answer"].Value;
-        string wrongAnswer1 = obj["Questions"][currentQuestion]["Incorrect Answer 1"].Value;
-        string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value;
-        string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value;
+        JSONNode node = JSON.Parse(jsonString);
+        JSONObject obj = node.AsObject;
+        
+        numOfQuestions = (obj["Questions"].Count);
+        //Debug.Log(numOfQuestions);
+        numOfAnswers = (obj["Questions"][currentQuestion].Count - 1);
+        //Debug.Log("num of answers " + numOfAnswers );
 
-        Vector3 position = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(0.0f, 3.0f), Random.Range(-3.0f, 3.0f));
-        GameObject myText = Instantiate(QText, position, Quaternion.identity);
-        TextMeshPro textComponent = myText.GetComponent<TextMeshPro>();
-        textComponent.text = correctAnswer;
-        switch (txtcounter)
+        for (int a = 0; a < numOfAnswers; a++)
         {
-            case 0:
-                textComponent.text = correctAnswer; //if can add tag can have onclick event apply to this
-                break;
-            case 1:
-                textComponent.text = wrongAnswer1;
-                break;
-            case 2:
-                textComponent.text = wrongAnswer2;
-                break;
-            case 3:
-                textComponent.text = wrongAnswer3;
-                break;
-        }
-        txtcounter++;
-        Debug.Log(txtcounter);
-        if (counter >= answersInstances.Length)
-        {
-            counter = 0; //counter should be numOfAnswers
-        }
-        Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
-        counter++;
+            string correctAnswer = obj["Questions"][currentQuestion]["Correct Answer"].Value;
+            string wrongAnswer1 = obj["Questions"][currentQuestion]["Incorrect Answer 1"].Value;
+            string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value;
+            string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value;
 
-
+            Vector3 position = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(0.0f, 3.0f), Random.Range(-3.0f, 3.0f));
+            GameObject myText = Instantiate(QText, position, Quaternion.identity);
+            TextMeshPro textComponent = myText.GetComponent<TextMeshPro>();
+            textComponent.text = correctAnswer;
+            switch (txtcounter)
+            {
+                case 0:
+                    textComponent.text = correctAnswer; //if can add tag can have onclick event apply to this
+                    break;
+                case 1:
+                    textComponent.text = wrongAnswer1;
+                    break;
+                case 2:
+                    textComponent.text = wrongAnswer2;
+                    break;
+                case 3:
+                    textComponent.text = wrongAnswer3;
+                    break;
+            }
+            txtcounter++;
+            Debug.Log(txtcounter);
+            if (counter >= answersInstances.Length)
+            {
+                counter = 0; //counter should be numOfAnswers
+            }
+            Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
+            counter++;
+        }
     }
-
-    /**
-    for (int i = 0 ; i < numOfQuestions; i++)
-    {
-        
-
-        
-        
-        string correctAnswer = obj["Questions"][i]["Correct Answer"].Value;
-        string wrongAnswer1 = obj["Questions"][i]["Incorrect Answer 1"].Value;
-        string wrongAnswer2 = obj["Questions"][i]["Incorrect Answer 2"].Value;
-        string wrongAnswer3 = obj["Questions"][i]["Incorrect Answer 3"].Value;
-
-
-
-
-        //string questionName = obj["Questions"][i]["Question"].Value;
-
-
-        numOfAnswers = (obj["Questions"][1].Count - 1);
-        Debug.Log("num of answers " + numOfAnswers );
-        
-
-
-        
-        Vector3 position = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(0.0f, 3.0f), Random.Range(-3.0f, 3.0f));
-        if (counter >= answersInstances.Length)
-        {
-            counter = 0; //counter should be numOfAnswers
-        }
-        Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
-        counter++;  // making new qbox for each answer
-       
-
-
-
-
-        
-        GameObject myText = Instantiate(QText, position, Quaternion.identity);
-        TextMeshPro textComponent = myText.GetComponent<TextMeshPro>();
-        textComponent.text = correctAnswer;
-    
-        }    **/
-     }
 }

@@ -149,8 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e52c5117e8dc54aba9f3f217ba525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickEvent
-  Qbox: {fileID: 0}
+  cObject: []
   objects: []
+  getdata: {fileID: 0}
 --- !u!1 &8442224577368310373
 GameObject:
   m_ObjectHideFlags: 0

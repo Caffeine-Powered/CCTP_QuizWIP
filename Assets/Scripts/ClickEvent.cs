@@ -1,22 +1,58 @@
 using UnityEngine;
+using System.Collections.Generic;
+using SimpleJSON;
+using UnityEngine.Networking;
+using System.Collections;
+using TMPro;
 
 public class ClickEvent : MonoBehaviour
 {
     public GameObject[] cObject;
     public GameObject[] objects;
+    public GetData getdata;
+    
+
+
+
+    public void Start()
+    {
+        getdata = FindObjectOfType<GetData>();
+        Debug.Log("current question: " + getdata.currentQuestion);
+    }
+
     public void OnClick()
     {
-        objects = GameObject.FindGameObjectsWithTag("QuestionBox");
+        StartCoroutine (WaitAndDestroy());
+        getdata.currentQuestion++;
+    }
+
+    public IEnumerator WaitAndDestroy()
+    {
+        yield return new WaitForSeconds(1);
+        Debug.Log("Waited");
+                objects = GameObject.FindGameObjectsWithTag("QuestionBox");
             foreach(GameObject obj in objects)
             {
                 Destroy(obj);
+                
+                //if (getdata.currentQuestion >= getdata.numOfQuestions)
+                //{
+                //    Debug.Log("next q");
+                //}
             }
+
+
         cObject = GameObject.FindGameObjectsWithTag("CorrectAnswer");
             foreach(GameObject obj in cObject)
             {
                 Destroy(obj);
+                if (getdata.currentQuestion >= getdata.numOfQuestions)
+                {
+                    Debug.Log(getdata.currentQuestion);
+                }
             }
+        //getdata.ReadJSON();
+        Debug.Log("current question: " + getdata.currentQuestion);
         
-
     }
 }
