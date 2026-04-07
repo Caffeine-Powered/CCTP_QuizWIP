@@ -9,6 +9,7 @@ TagManager:
   - Score
   - QuestionBox
   - CorrectAnswer
+  - Data
   layers:
   - Default
   - TransparentFX

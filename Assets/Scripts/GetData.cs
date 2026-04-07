@@ -15,7 +15,7 @@ public class GetData : MonoBehaviour
     public int currentQuestion;
     private int counter;
     private int txtcounter;
-    public string jsonString;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,6 +51,7 @@ public class GetData : MonoBehaviour
         JSONNode node = JSON.Parse(jsonString);
         JSONObject obj = node.AsObject;
         
+    
         numOfQuestions = (obj["Questions"].Count);
         //Debug.Log(numOfQuestions);
         numOfAnswers = (obj["Questions"][currentQuestion].Count - 1);
@@ -90,6 +91,8 @@ public class GetData : MonoBehaviour
             }
             Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
             counter++;
+            
         }
     }
+    
 }

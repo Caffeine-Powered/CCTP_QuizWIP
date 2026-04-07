@@ -13,35 +13,28 @@ public class ClickEvent : MonoBehaviour
     
 
 
-
     public void Start()
     {
         getdata = FindObjectOfType<GetData>();
-        Debug.Log("current question: " + getdata.currentQuestion);
     }
 
     public void OnClick()
     {
+
         StartCoroutine (WaitAndDestroy());
-        getdata.currentQuestion++;
     }
 
     public IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(1);
         Debug.Log("Waited");
-                objects = GameObject.FindGameObjectsWithTag("QuestionBox");
+        objects = GameObject.FindGameObjectsWithTag("QuestionBox");
             foreach(GameObject obj in objects)
             {
                 Destroy(obj);
                 
-                //if (getdata.currentQuestion >= getdata.numOfQuestions)
-                //{
-                //    Debug.Log("next q");
-                //}
             }
-
-
+        
         cObject = GameObject.FindGameObjectsWithTag("CorrectAnswer");
             foreach(GameObject obj in cObject)
             {
@@ -51,8 +44,8 @@ public class ClickEvent : MonoBehaviour
                     Debug.Log(getdata.currentQuestion);
                 }
             }
-        //getdata.ReadJSON();
         Debug.Log("current question: " + getdata.currentQuestion);
-        
+        //getdata.ReadJSON();
+
     }
 }
