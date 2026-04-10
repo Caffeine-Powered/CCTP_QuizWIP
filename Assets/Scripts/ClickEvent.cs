@@ -26,7 +26,7 @@ public class ClickEvent : MonoBehaviour
 
     public IEnumerator WaitAndDestroy()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Debug.Log("Waited");
         objects = GameObject.FindGameObjectsWithTag("QuestionBox");
             foreach(GameObject obj in objects)
@@ -44,8 +44,11 @@ public class ClickEvent : MonoBehaviour
                     Debug.Log(getdata.currentQuestion);
                 }
             }
+        getdata.currentQuestion ++;
         Debug.Log("current question: " + getdata.currentQuestion);
+
         //getdata.ReadJSON();
+        
 
     }
 }
