@@ -17,6 +17,11 @@ public class GetData : MonoBehaviour
     private int txtcounter;
     public GameObject[] imageInstances;
     public string questionTag;
+    private GameObject qBox;
+    public Vector3 position;
+
+    public GameObject[] activeObjects;
+    public GameObject[] inactiveObjects;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +58,6 @@ public class GetData : MonoBehaviour
         JSONNode node = JSON.Parse(jsonString);
         JSONObject obj = node.AsObject;
         
-    
         numOfQuestions = (obj["Questions"].Count);
         //Debug.Log(numOfQuestions);
         numOfAnswers = (obj["Questions"][currentQuestion].Count - 1);
@@ -68,7 +72,7 @@ public class GetData : MonoBehaviour
                 string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value;
                 string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value;
 
-                Vector3 position = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(0.0f, 3.0f), Random.Range(-3.0f, 3.0f));
+                Vector3 position = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(0.0f, 3.0f)  + 100.0f, Random.Range(0.0f, 3.0f));
                 GameObject myText = Instantiate(QText, position, Quaternion.identity);
                 TextMeshPro textComponent = myText.GetComponent<TextMeshPro>();
                 textComponent.text = correctAnswer;
@@ -90,17 +94,36 @@ public class GetData : MonoBehaviour
                         break;
                 }
                 txtcounter++;
-                Debug.Log(txtcounter);
+                //Debug.Log(txtcounter);
                 if (counter >= answersInstances.Length)
                 {
                     counter = 0; //counter should be numOfAnswers
                 }
                 GameObject qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
                 qBox.tag = questionTag;
-                counter++; 
+                counter++;
             }
             currentQuestion++;
+ 
+        }
+        currentQuestion = 0;
+        Debug.Log("currentQuestion: " + currentQuestion);
+        Debug.Log(currentQuestion.ToString());
+        DisableQuestions();
+        
+  
+    }
+
+    public void DisableQuestions()
+    {
+        activeObjects = GameObject.FindGameObjectsWithTag(currentQuestion.ToString());
+        foreach(GameObject obj in activeObjects)
+        {
+            Debug.Log("Tagged With 0");
+            //lower obj y position by 100.0f
+            obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y -100.0f, obj.transform.position.z);
         }
         
     }
+
 }
