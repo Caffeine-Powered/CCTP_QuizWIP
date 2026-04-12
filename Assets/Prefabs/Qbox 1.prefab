@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5154236864916326855}
   - component: {fileID: 703893768138640367}
   - component: {fileID: 5342148178753824998}
-  - component: {fileID: 5284434464213352289}
+  - component: {fileID: 1467646271940389073}
   m_Layer: 5
   m_Name: Qbox 1
   m_TagString: QuestionBox
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5154236864916326855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
   camera: {fileID: 0}
---- !u!114 &5284434464213352289
+--- !u!114 &1467646271940389073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,12 +146,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5207133920788686917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7e52c5117e8dc54aba9f3f217ba525b, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c3bbc395ca708419bc2e865f33743d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickEvent
-  cObject: []
-  objects: []
+  m_EditorClassIdentifier: Assembly-CSharp::OnClickNEW
   getdata: {fileID: 0}
+  toDestroy: []
 --- !u!1 &8442224577368310373
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +179,7 @@ RectTransform:
   m_GameObject: {fileID: 8442224577368310373}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000035762784}
   m_LocalPosition: {x: 0, y: 0, z: -1.5865232}
-  m_LocalScale: {x: -0.590962, y: -3.09209, z: -0.4949845}
+  m_LocalScale: {x: -0.3, y: -6, z: -0.4949845}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1870511799634130895}
@@ -188,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 201}
+  m_AnchoredPosition: {x: -0, y: 200.95}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2771201003490189142
@@ -250,7 +249,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -273,8 +272,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5284434464213352289}
-        m_TargetAssemblyTypeName: ClickEvent, Assembly-CSharp
+      - m_Target: {fileID: 1467646271940389073}
+        m_TargetAssemblyTypeName: OnClickNEW, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -298,8 +297,12 @@ PrefabInstance:
       value: AnswerText
       objectReference: {fileID: 0}
     - target: {fileID: 5167713714044922964, guid: ae2560d04b2e60c4e9c1b63a14ef99ff, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167713714044922964, guid: ae2560d04b2e60c4e9c1b63a14ef99ff, type: 3}
       propertyPath: m_fontSize
-      value: 29.2
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5167713714044922964, guid: ae2560d04b2e60c4e9c1b63a14ef99ff, type: 3}
       propertyPath: m_margin.x

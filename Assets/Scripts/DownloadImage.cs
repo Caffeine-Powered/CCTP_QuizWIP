@@ -6,14 +6,13 @@ using UnityEngine.UI;
 
 public class DownloadImage : MonoBehaviour
 {
-    [SerializeField] private Image imagePlaced;
-    [SerializeField] private Renderer objRenderer;
-    private string imageToLoad;
+    [SerializeField] public Image imagePlaced;
+    [SerializeField] public Renderer objRenderer;
+    public string imageToLoad;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ImageStart()
     {
-        imageToLoad = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Jempol_Ngadep_Atas_%28cropped%29.jpg";
         StartCoroutine(LoadImage(imageToLoad));
     }
 
@@ -37,7 +36,7 @@ public class DownloadImage : MonoBehaviour
 
             //put texture onto sphere
             objRenderer.material.mainTexture = texture;
-            //objRenderer.material.SetTexture("_MainTex", texture);
+
         }
     }
 

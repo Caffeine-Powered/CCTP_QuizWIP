@@ -1777,8 +1777,14 @@ MonoBehaviour:
   - {fileID: 5207133920788686917, guid: af9f6e7743120ec4fb65f53d218702aa, type: 3}
   - {fileID: 5207133920788686917, guid: af9f6e7743120ec4fb65f53d218702aa, type: 3}
   currentQuestion: 0
-  imageInstances: []
   questionTag: 
+  position: {x: 0, y: 0, z: 0}
+  QUIText: {fileID: 0}
+  activeObjects: []
+  downloadedImage: {fileID: 0}
+  questionImage: {fileID: 0}
+  imageInstances:
+  - {fileID: 2159287761323751707, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
 --- !u!4 &889152090
 Transform:
   m_ObjectHideFlags: 0
@@ -1808,6 +1814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DownloadImage
   imagePlaced: {fileID: 1046601375}
   objRenderer: {fileID: 1394645544}
+  imageToLoad: 
 --- !u!1 &934051759
 GameObject:
   m_ObjectHideFlags: 0
