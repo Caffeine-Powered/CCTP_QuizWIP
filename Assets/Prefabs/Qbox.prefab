@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnClickNEW
   getdata: {fileID: 0}
+  correctText: {fileID: 0}
   toDestroy: []
 --- !u!114 &8113970407334822539
 MonoBehaviour:

@@ -18,6 +18,7 @@ public class GetData : MonoBehaviour
     private int txtcounter;
     private int imgcounter;
     public int score;
+    public GameObject scoreText;
     public string questionTag;
     private GameObject qBox;
     public Vector3 position;
@@ -25,6 +26,7 @@ public class GetData : MonoBehaviour
     public GameObject QUIText;
     public GameObject[] UIInstances;
     public GameObject[] activeObjects;
+    public HideShowUI showUI;
 
     public DownloadImage downloadedImage;
     public GameObject questionImage;
@@ -41,6 +43,7 @@ public class GetData : MonoBehaviour
         currentQuestion = 0;
         StartCoroutine(getData());
         downloadedImage = FindObjectOfType<DownloadImage>();
+        showUI = FindObjectOfType<HideShowUI>();
         Debug.Log("Start");
     }
 
@@ -157,8 +160,11 @@ public class GetData : MonoBehaviour
     {
         if (currentQuestion == numOfQuestions)
         {
-            SceneManager.LoadSceneAsync(2);
-            Debug.Log("Scenechange");
+            string finalScore = score.ToString();
+            //SceneManager.LoadSceneAsync(2);
+            Debug.Log(score + "/" + numOfQuestions);
+
+            showUI.UION();
         }
     }
 }

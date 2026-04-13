@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5154236864916326855}
   - component: {fileID: 703893768138640367}
   - component: {fileID: 5342148178753824998}
-  - component: {fileID: 1467646271940389073}
+  - component: {fileID: -1641389222428921428}
   m_Layer: 5
   m_Name: Qbox 1
   m_TagString: QuestionBox
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5154236864916326855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
   camera: {fileID: 0}
---- !u!114 &1467646271940389073
+--- !u!114 &-1641389222428921428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,11 +146,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5207133920788686917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c3bbc395ca708419bc2e865f33743d, type: 3}
+  m_Script: {fileID: 11500000, guid: 65bb8ba0e6f2a244ab931362f83a9eff, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OnClickNEW
+  m_EditorClassIdentifier: Assembly-CSharp::OnClickWrong
   getdata: {fileID: 0}
+  correctText: {fileID: 0}
   toDestroy: []
+  showUI: {fileID: 0}
 --- !u!1 &8442224577368310373
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,8 +274,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1467646271940389073}
-        m_TargetAssemblyTypeName: OnClickNEW, Assembly-CSharp
+      - m_Target: {fileID: -1641389222428921428}
+        m_TargetAssemblyTypeName: OnClickWrong, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:

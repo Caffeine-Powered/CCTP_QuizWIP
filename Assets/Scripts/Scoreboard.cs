@@ -5,6 +5,7 @@ using System.Collections;
 public class Scoreboard : MonoBehaviour
 {
     public GetData getdata;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,4 +16,5 @@ public class Scoreboard : MonoBehaviour
     {
         getdata.score++;
     }
+
 }
