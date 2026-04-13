@@ -18,8 +18,10 @@ public class GetData : MonoBehaviour
     private int txtcounter;
     private int imgcounter;
     public int score;
+    public int Qno;
     public GameObject scoreText;
     public string questionTag;
+    public string questionUI;
     private GameObject qBox;
     public Vector3 position;
     public Vector3 Qposition;
@@ -36,11 +38,13 @@ public class GetData : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Qno = 0;
         score = 0;
         imgcounter = 0;
         counter = 0;
         txtcounter = 0;
         currentQuestion = 0;
+        
         StartCoroutine(getData());
         downloadedImage = FindObjectOfType<DownloadImage>();
         showUI = FindObjectOfType<HideShowUI>();
@@ -71,49 +75,45 @@ public class GetData : MonoBehaviour
         JSONNode node = JSON.Parse(jsonString);
         JSONObject obj = node.AsObject;
         
-        numOfQuestions = (obj["Questions"].Count);
-        //Debug.Log(numOfQuestions);
-        numOfAnswers = (obj["Questions"][currentQuestion].Count - 1);
-        //Debug.Log("num of answers " + numOfAnswers );
+        numOfQuestions = (obj["Questions"].Count);  //assigns number of questions int
+        numOfAnswers = (obj["Questions"][currentQuestion].Count - 1); //assigns number of answers int and removes the question
+        
 
         for (int i = 0; i < numOfQuestions; i++)    //instantiate all of them/ tag and deactivate per question
         {
-            string questionUI = obj["Questions"][currentQuestion]["Question"].Value;
-            txtcounter = 0;
-            for (int a = 0; a < numOfAnswers; a++)
+            questionUI = obj["Questions"][currentQuestion]["Question"].Value;
+            txtcounter = 0; //empties counter for textbox instances
+            for (int a = 0; a < numOfAnswers; a++)  //for loop until a = number of answers
             {
                 
-                string correctAnswer = obj["Questions"][currentQuestion]["Correct Answer"].Value;
-                string wrongAnswer1 = obj["Questions"][currentQuestion]["Incorrect Answer 1"].Value;
-                string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value;
-                string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value;
+                string correctAnswer = obj["Questions"][currentQuestion]["Correct Answer"].Value; //assigns correct answer to string
+                string wrongAnswer1 = obj["Questions"][currentQuestion]["Incorrect Answer 1"].Value; //assigns wrong answer1 to string
+                string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value; //assigns wrong answer2 to string
+                string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value; //assigns wrong answer3 to string
 
-                
-                
-                Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f));
-                GameObject myText = Instantiate(QText, position, Quaternion.identity);
-                TextMeshPro textComponent = myText.GetComponent<TextMeshPro>();
-                
-                switch (txtcounter)
+                Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
+                GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
+                TextMeshPro textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
+                switch (txtcounter) //switch statement for instances of answers from txtcounter
                 {
                     case 0:
-                        textComponent.text = correctAnswer; //if can add tag can have onclick event apply to this
+                        textComponent.text = correctAnswer; //assigns correct answer
                         break;
                     case 1:
-                        textComponent.text = wrongAnswer1;
+                        textComponent.text = wrongAnswer1;  //assigns wrong answer
                         break;
                     case 2:
-                        textComponent.text = wrongAnswer2;
+                        textComponent.text = wrongAnswer2;  //assigns wrong answer
                         break;
                     case 3:
-                        textComponent.text = wrongAnswer3;
+                        textComponent.text = wrongAnswer3;  //assigns wrong answer
                         break;
                 }
                 
                 Debug.Log(textComponent.text);
-                txtcounter++;
-                questionTag = currentQuestion.ToString();
-                myText.tag = questionTag;
+                txtcounter++; //increments txtcounter
+                questionTag = currentQuestion.ToString(); //assigns questionTag string by turning currentquestion int and turning it into a string
+                myText.tag = questionTag;   //assigns a tag to each new answer text prefab based on what question it was on in the for loop
 
                 //Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f));
                 
@@ -132,13 +132,16 @@ public class GetData : MonoBehaviour
                 counter++;
 
             }
-            position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f));
-            GameObject quiText = Instantiate(QUIText, position, Quaternion.identity);
-            TextMeshPro uiText = quiText.GetComponent<TextMeshPro>();
-            uiText.text = questionUI;
+            Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (1.0f)); //creates new vector with random range in parameters
+            GameObject QuesText = Instantiate(QUIText, Qposition, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
+            TextMeshPro QUItextcomponent = QuesText.GetComponent<TextMeshPro>(); //finds the text prefab text
+            QUItextcomponent.text = questionUI;
+            QuesText.tag = questionTag;
+
             currentQuestion++;
         }
         currentQuestion = 0;
+        //showUI.questionText.text = questionUI;
         Debug.Log("currentQuestion: " + currentQuestion);
         Debug.Log(currentQuestion.ToString());
         DisableQuestions();
@@ -153,6 +156,7 @@ public class GetData : MonoBehaviour
             //Debug.Log("Tagged With: " + currentQuestion.ToString());
             obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y -100.0f, obj.transform.position.z);
         }
+        Debug.Log("sada" + questionUI);
         
     }
 
@@ -163,7 +167,6 @@ public class GetData : MonoBehaviour
             string finalScore = score.ToString();
             //SceneManager.LoadSceneAsync(2);
             Debug.Log(score + "/" + numOfQuestions);
-
             showUI.UION();
         }
     }

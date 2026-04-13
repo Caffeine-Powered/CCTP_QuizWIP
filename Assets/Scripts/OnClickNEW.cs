@@ -27,25 +27,29 @@ public class OnClickNEW : MonoBehaviour
         showUI.showCorrect();
         StartCoroutine (WaitAndDestroy());
         Debug.Log("Score: " + getdata.score);
+        //Debug.Log("Question :" + getdata.questionUI);
+
     }
 
 
     public IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("Waited");
+        //Debug.Log("Waited");
         showUI.hideCorrect();
         toDestroy = GameObject.FindGameObjectsWithTag(getdata.currentQuestion.ToString());
         foreach(GameObject obj in toDestroy)
         {
             Destroy(obj);
         }
-        getdata.currentQuestion++;
-        //Debug.Log(getdata.currentQuestion);
+        getdata.currentQuestion++; //this one cycles  the questions
+        //showUI.questionText.text = getdata.questionUI;
+
         getdata.DisableQuestions();
         getdata.EndGameCheck();
-        Debug.Log("CurrentQ: " + getdata.currentQuestion);
+
     }
+
 }
 
 
