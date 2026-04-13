@@ -9,7 +9,8 @@ public class HideShowUI : MonoBehaviour
     public Text finalText;
     public Text correctText;
     public Text wrongText;
-    public Text questionText;
+    public GameObject finishButton;
+    //public Text questionText;
 
     public GetData getdata;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +20,7 @@ public class HideShowUI : MonoBehaviour
         scoreText.enabled = false;
         finalText.enabled = false;
         wrongText.enabled = false;
+        finishButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class HideShowUI : MonoBehaviour
     {
         scoreText.enabled = true;
         finalText.enabled = true;
+        finishButton.SetActive(true);
     }
 
     public void showCorrect()

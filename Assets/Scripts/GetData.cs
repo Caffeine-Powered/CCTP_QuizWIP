@@ -127,8 +127,8 @@ public class GetData : MonoBehaviour
 
                 GameObject questionImage = Instantiate (imageInstances[0], position, Random.rotation);
                 questionImage.tag = questionTag;
-                //downloadedImage.imageToLoad = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Jempol_Ngadep_Atas_%28cropped%29.jpg";
-                //downloadedImage.ImageStart();
+                downloadedImage.imageToLoad = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Jempol_Ngadep_Atas_%28cropped%29.jpg";
+                downloadedImage.ImageStart();
                 counter++;
 
             }
