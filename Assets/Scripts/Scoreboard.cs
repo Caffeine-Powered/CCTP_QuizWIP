@@ -1,24 +1,18 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Scoreboard : MonoBehaviour
 {
-    
-    public float currentScore;
-    public AudioSource CorrectDing;
-
+    public GetData getdata;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-   public void Score()
+    void Start()
     {
-        currentScore = 0;
+        getdata = FindObjectOfType<GetData>();
     }
-
-   public void UpdateScore()
-   {
-     currentScore ++;
-     Debug.Log("SCORE: "+ currentScore);
-     CorrectDing.Play();
-     
-   }
-
-   
+    // Update is called once per frame
+    public void UpdateScore()
+    {
+        getdata.score++;
+    }
 }

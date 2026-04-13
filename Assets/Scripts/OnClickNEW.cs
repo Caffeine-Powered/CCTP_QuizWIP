@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using SimpleJSON;
 using UnityEngine.Networking;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class OnClickNEW : MonoBehaviour
 {
     public GetData getdata;
     public GameObject[] toDestroy;
     
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +20,7 @@ public class OnClickNEW : MonoBehaviour
     public void OnClick()
     {
         StartCoroutine (WaitAndDestroy());
-
+        Debug.Log("Score: " + getdata.score);
     }
 
 
@@ -37,5 +36,9 @@ public class OnClickNEW : MonoBehaviour
         getdata.currentQuestion++;
         //Debug.Log(getdata.currentQuestion);
         getdata.DisableQuestions();
+        getdata.EndGameCheck();
+        Debug.Log("CurrentQ: " + getdata.currentQuestion);
     }
 }
+
+

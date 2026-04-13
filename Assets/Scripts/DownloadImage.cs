@@ -26,6 +26,8 @@ public class DownloadImage : MonoBehaviour
             Debug.Log(www.error);
         }
         else
+
+        
         {
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
 

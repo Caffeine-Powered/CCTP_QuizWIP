@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5342148178753824998}
   - component: {fileID: -3036843028210645684}
   - component: {fileID: 3783188794579895249}
+  - component: {fileID: 8113970407334822539}
   m_Layer: 5
   m_Name: Qbox
   m_TagString: CorrectAnswer
@@ -249,6 +250,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OnClickNEW
   getdata: {fileID: 0}
   toDestroy: []
+--- !u!114 &8113970407334822539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207133920788686917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26eb5ed321999a84fbad1697817229dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scoreboard
+  getdata: {fileID: 0}
 --- !u!1 &8442224577368310373
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,9 +384,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ClickEvent, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 8113970407334822539}
+        m_TargetAssemblyTypeName: Scoreboard, Assembly-CSharp
+        m_MethodName: UpdateScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
