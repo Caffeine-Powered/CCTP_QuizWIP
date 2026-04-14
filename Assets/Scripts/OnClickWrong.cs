@@ -33,7 +33,7 @@ public class OnClickWrong : MonoBehaviour
     public IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("Waited");
+        //Debug.Log("Waited");
         showUI.hideWrong();
         toDestroy = GameObject.FindGameObjectsWithTag(getdata.currentQuestion.ToString());
         foreach(GameObject obj in toDestroy)
@@ -44,7 +44,7 @@ public class OnClickWrong : MonoBehaviour
         //Debug.Log(getdata.currentQuestion);
         getdata.DisableQuestions();
         getdata.EndGameCheck();
-        Debug.Log("CurrentQ: " + getdata.currentQuestion);
+        //Debug.Log("CurrentQ: " + getdata.currentQuestion);
     }
 }
 

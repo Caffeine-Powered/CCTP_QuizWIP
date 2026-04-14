@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class HideShowUI : MonoBehaviour
 {
+
     public Text scoreText;
     public Text finalText;
     public Text correctText;
     public Text wrongText;
     public GameObject finishButton;
+    public GameObject restartButton;
+    public GameObject menuButton;
+    private bool menuOpen;
+    public GameObject hideUI;
     //public Text questionText;
 
     public GetData getdata;
@@ -21,6 +26,10 @@ public class HideShowUI : MonoBehaviour
         finalText.enabled = false;
         wrongText.enabled = false;
         finishButton.SetActive(false);
+        restartButton.SetActive(false);
+        menuOpen = false;
+        hideUI.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -35,7 +44,13 @@ public class HideShowUI : MonoBehaviour
         scoreText.enabled = true;
         finalText.enabled = true;
         finishButton.SetActive(true);
+
+        if (getdata.score != getdata.numOfQuestions)
+        {
+            restartButton.SetActive(true);
+        }
     }
+    
 
     public void showCorrect()
     {
@@ -55,5 +70,23 @@ public class HideShowUI : MonoBehaviour
     public void hideWrong()
     {
         wrongText.enabled = false;
+    }
+
+    public void MenuManager()
+    {
+        if (menuOpen == false)
+        {
+            hideUI.SetActive(true);
+            restartButton.SetActive(true);
+            finishButton.SetActive(true);
+            menuOpen = true;
+        }
+        else if (menuOpen == true)
+        {
+            hideUI.SetActive(false);
+            restartButton.SetActive(false);
+            finishButton.SetActive(false);
+            menuOpen = false;
+        }
     }
 }

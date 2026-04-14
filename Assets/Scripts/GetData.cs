@@ -11,34 +11,33 @@ public class GetData : MonoBehaviour
     public string DataURL;
     public int numOfQuestions;
     public int numOfAnswers;
-    public GameObject QText;
-    public GameObject[] answersInstances;
     public int currentQuestion;
     private int counter;
     private int txtcounter;
     private int imgcounter;
     public int score;
-    public int Qno;
+    public GameObject QText;
     public GameObject scoreText;
+    public GameObject questionImage;
     public string questionTag;
     public string questionUI;
     private GameObject qBox;
     public Vector3 position;
     public Vector3 Qposition;
     public GameObject QUIText;
-    public GameObject[] UIInstances;
+    public GameObject[] answersInstances;
     public GameObject[] activeObjects;
     public HideShowUI showUI;
 
+
     public DownloadImage downloadedImage;
-    public GameObject questionImage;
+  
     public GameObject[] imageInstances;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Qno = 0;
         score = 0;
         imgcounter = 0;
         counter = 0;
@@ -125,14 +124,19 @@ public class GetData : MonoBehaviour
                 GameObject qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
                 qBox.tag = questionTag;
 
-                GameObject questionImage = Instantiate (imageInstances[0], position, Random.rotation);
+                if (imgcounter >= answersInstances.Length)
+                {
+                    imgcounter = 0; //counter should be numOfAnswers
+                }
+                GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
                 questionImage.tag = questionTag;
-                downloadedImage.imageToLoad = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Jempol_Ngadep_Atas_%28cropped%29.jpg";
+                
+                downloadedImage.imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
                 downloadedImage.ImageStart();
                 counter++;
 
             }
-            Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (1.0f)); //creates new vector with random range in parameters
+            Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (2.0f)); //creates new vector with random range in parameters
             GameObject QuesText = Instantiate(QUIText, Qposition, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
             TextMeshPro QUItextcomponent = QuesText.GetComponent<TextMeshPro>(); //finds the text prefab text
             QUItextcomponent.text = questionUI;
@@ -157,7 +161,6 @@ public class GetData : MonoBehaviour
             obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y -100.0f, obj.transform.position.z);
         }
         Debug.Log("sada" + questionUI);
-        
     }
 
     public void EndGameCheck()
@@ -165,7 +168,6 @@ public class GetData : MonoBehaviour
         if (currentQuestion == numOfQuestions)
         {
             string finalScore = score.ToString();
-            //SceneManager.LoadSceneAsync(2);
             Debug.Log(score + "/" + numOfQuestions);
             showUI.UION();
         }

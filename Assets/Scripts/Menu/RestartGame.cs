@@ -7,6 +7,6 @@ public class RestartGame : MonoBehaviour
 {
      public void OnClick()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 }

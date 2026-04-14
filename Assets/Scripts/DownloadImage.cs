@@ -32,9 +32,9 @@ public class DownloadImage : MonoBehaviour
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
 
             //put texture onto image
-            Sprite sprite = Sprite.Create(texture, new Rect(0,0,texture.width, texture.height),new Vector2());
-            imagePlaced.sprite = sprite;
-            imagePlaced.preserveAspect = true;
+            //Sprite sprite = Sprite.Create(texture, new Rect(0,0,texture.width, texture.height),new Vector2());
+            //imagePlaced.sprite = sprite;
+            //imagePlaced.preserveAspect = true;
 
             //put texture onto sphere
             objRenderer.material.mainTexture = texture;
