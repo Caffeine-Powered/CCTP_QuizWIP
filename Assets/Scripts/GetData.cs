@@ -128,15 +128,16 @@ public class GetData : MonoBehaviour
                 {
                     imgcounter = 0; //counter should be numOfAnswers
                 }
-                GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
-                questionImage.tag = questionTag;
+                
                 
                 downloadedImage.imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
                 downloadedImage.ImageStart();
+                GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
+                questionImage.tag = questionTag;
                 counter++;
 
             }
-            Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (2.0f)); //creates new vector with random range in parameters
+            Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (3.0f)); //creates new vector with random range in parameters
             GameObject QuesText = Instantiate(QUIText, Qposition, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
             TextMeshPro QUItextcomponent = QuesText.GetComponent<TextMeshPro>(); //finds the text prefab text
             QUItextcomponent.text = questionUI;

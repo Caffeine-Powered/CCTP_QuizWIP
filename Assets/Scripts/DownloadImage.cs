@@ -8,13 +8,16 @@ public class DownloadImage : MonoBehaviour
 {
     [SerializeField] public Image imagePlaced;
     [SerializeField] public Renderer objRenderer;
+    public Material material;
     public string imageToLoad;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void ImageStart()
     {
         StartCoroutine(LoadImage(imageToLoad));
     }
+
 
     public IEnumerator LoadImage(string url)
     {
