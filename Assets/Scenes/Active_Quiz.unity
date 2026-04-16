@@ -708,6 +708,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418703544}
   m_CullTransparentMesh: 1
+--- !u!1 &465397513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2159287761323751707, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
+  m_PrefabInstance: {fileID: 4520303866225404825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &473999892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,9 +2184,7 @@ MonoBehaviour:
   showUI: {fileID: 0}
   downloadedImage: {fileID: 0}
   imageInstances:
-  - {fileID: 2159287761323751707, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
-  - {fileID: 2159287761323751707, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
-  - {fileID: 2159287761323751707, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
+  - {fileID: 465397513}
 --- !u!4 &889152090
 Transform:
   m_ObjectHideFlags: 0
@@ -2211,6 +2214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DownloadImage
   imagePlaced: {fileID: 1046601375}
   objRenderer: {fileID: 1394645544}
+  material: {fileID: 2100000, guid: 951f28a3f4ddbf6488a2a83dd41b2077, type: 2}
   imageToLoad: 
 --- !u!1 &934051759
 GameObject:
@@ -2434,7 +2438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.99607843}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.80784315}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3013,7 +3017,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -5134,7 +5138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2159287761323751707, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2995035348747586048, guid: 6823062dc70758c42811e0968f67c4f0, type: 3}
       propertyPath: m_LocalPosition.x
