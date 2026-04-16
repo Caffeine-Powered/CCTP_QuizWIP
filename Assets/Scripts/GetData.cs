@@ -18,7 +18,6 @@ public class GetData : MonoBehaviour
     public int score;
     public GameObject QText;
     public GameObject scoreText;
-    public GameObject questionImage;
     public string questionTag;
     public string questionUI;
     private GameObject qBox;
@@ -30,9 +29,11 @@ public class GetData : MonoBehaviour
     public HideShowUI showUI;
 
 
+    public GameObject questionImage;
     public DownloadImage downloadedImage;
-  
     public GameObject[] imageInstances;
+    public Material imgmaterial;
+    public Color color;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -128,11 +129,19 @@ public class GetData : MonoBehaviour
                 {
                     imgcounter = 0; //counter should be numOfAnswers
                 }
-                
-                
-                downloadedImage.imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
-                downloadedImage.ImageStart();
+
                 GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
+                downloadedImage.ImageStart();
+                imgmaterial = questionImage.GetComponent<Renderer>().material;
+                color = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
+                imgmaterial.color = color;
+                //mainTexture = downloadedImage.texture;
+                
+
+
+
+
+
                 questionImage.tag = questionTag;
                 counter++;
 
@@ -146,7 +155,6 @@ public class GetData : MonoBehaviour
             currentQuestion++;
         }
         currentQuestion = 0;
-        //showUI.questionText.text = questionUI;
         Debug.Log("currentQuestion: " + currentQuestion);
         Debug.Log(currentQuestion.ToString());
         DisableQuestions();

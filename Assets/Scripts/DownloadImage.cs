@@ -10,14 +10,16 @@ public class DownloadImage : MonoBehaviour
     [SerializeField] public Renderer objRenderer;
     public Material material;
     public string imageToLoad;
+    public Texture2D texture;
+    public GetData getdata;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void ImageStart()
     {
+        imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
         StartCoroutine(LoadImage(imageToLoad));
     }
-
 
     public IEnumerator LoadImage(string url)
     {
@@ -29,19 +31,9 @@ public class DownloadImage : MonoBehaviour
             Debug.Log(www.error);
         }
         else
-
-        
         {
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-
-            //put texture onto image
-            //Sprite sprite = Sprite.Create(texture, new Rect(0,0,texture.width, texture.height),new Vector2());
-            //imagePlaced.sprite = sprite;
-            //imagePlaced.preserveAspect = true;
-
-            //put texture onto sphere
-            objRenderer.material.mainTexture = texture;
-
+            //getdata.material.material.mainTexture = texture;
         }
     }
 
