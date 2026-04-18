@@ -195,6 +195,7 @@ public class GetData : MonoBehaviour
         GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
         questionImage.tag = questionTag;
         yield return null;
+        Debug.Log("Waited4img");
         Renderer rend = questionImage.GetComponent<Renderer>();
         //rend.material = new Material(rend.material);
         rend.material.SetTexture("_BaseMap",downloadedImage.texture);
