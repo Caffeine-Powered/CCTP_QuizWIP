@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
+using  UnityEngine.UI;
 
 public class GetData : MonoBehaviour
 {
