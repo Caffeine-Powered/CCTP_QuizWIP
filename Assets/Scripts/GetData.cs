@@ -32,8 +32,9 @@ public class GetData : MonoBehaviour
     public GameObject questionImage;
     public DownloadImage downloadedImage;
     public GameObject[] imageInstances;
-    public Material imgmaterial;
+    public Material material;
     public Color color;
+    public Renderer meshRenderer;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -91,7 +92,7 @@ public class GetData : MonoBehaviour
                 string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value; //assigns wrong answer2 to string
                 string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value; //assigns wrong answer3 to string
 
-                Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
+                position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
                 GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
                 TextMeshPro textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
                 switch (txtcounter) //switch statement for instances of answers from txtcounter
@@ -122,12 +123,11 @@ public class GetData : MonoBehaviour
                 {
                     counter = 0; //counter should be numOfAnswers
                 }
-                GameObject qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
+                qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
                 qBox.tag = questionTag;
 
 
-                GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
-                questionImage.tag = questionTag;
+                
                 StartCoroutine(AddImage());
                 counter++;
 
@@ -176,7 +176,8 @@ public class GetData : MonoBehaviour
         }
         downloadedImage.ImageStart();
         Debug.Log("position used: " + position);
-        
+        GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
+        questionImage.tag = questionTag;
         yield return null;
         Debug.Log("Waited4img");
         Renderer rend = questionImage.GetComponent<Renderer>();

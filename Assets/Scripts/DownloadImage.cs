@@ -6,11 +6,10 @@ using UnityEngine.UI;
 
 public class DownloadImage : MonoBehaviour
 {
-    [SerializeField] public Image imagePlaced;
-    [SerializeField] public Renderer objRenderer;
-    public Material material;
+    public Image imagePlaced;
+    public Renderer objRenderer;
     public string imageToLoad;
-    public Texture2D texture;
+    public Texture texture;
     public GetData getdata;
     
 
@@ -32,7 +31,8 @@ public class DownloadImage : MonoBehaviour
         }
         else
         {
-            Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Debug.Log("Assigned Material");
             //getdata.material.material.mainTexture = texture;
         }
     }
