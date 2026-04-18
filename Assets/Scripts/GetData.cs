@@ -179,7 +179,7 @@ public class GetData : MonoBehaviour
         Debug.Log("position used: " + position);
         GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
         questionImage.tag = questionTag;
-        yield return null;
+        yield return new WaitForSeconds(1);
         Debug.Log("Waited4img");
         Renderer rend = questionImage.GetComponent<Renderer>();
         //rend.material = new Material(rend.material);
