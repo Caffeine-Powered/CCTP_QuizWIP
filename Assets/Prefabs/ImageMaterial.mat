@@ -110,6 +110,10 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+<<<<<<< HEAD
+=======
+    - _EnableExternalAlpha: 0
+>>>>>>> parent of f007016 (erty)
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -119,8 +123,16 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+<<<<<<< HEAD
+=======
+    - _Shininess: 0
+>>>>>>> parent of f007016 (erty)
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
+<<<<<<< HEAD
+=======
+    - _SpecSource: 0
+>>>>>>> parent of f007016 (erty)
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1

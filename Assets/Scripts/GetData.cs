@@ -125,24 +125,10 @@ public class GetData : MonoBehaviour
                 GameObject qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
                 qBox.tag = questionTag;
 
-                if (imgcounter >= answersInstances.Length)
-                {
-                    imgcounter = 0; //counter should be numOfAnswers
-                }
 
                 GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
-                downloadedImage.ImageStart();
-                imgmaterial = questionImage.GetComponent<Renderer>().material;
-                color = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
-                imgmaterial.color = color;
-                //mainTexture = downloadedImage.texture;
-                
-
-
-
-
-
                 questionImage.tag = questionTag;
+                StartCoroutine(AddImage());
                 counter++;
 
             }
@@ -181,7 +167,6 @@ public class GetData : MonoBehaviour
             showUI.UION();
         }
     }
-<<<<<<< HEAD
 
     IEnumerator AddImage()
     {
@@ -191,8 +176,7 @@ public class GetData : MonoBehaviour
         }
         downloadedImage.ImageStart();
         Debug.Log("position used: " + position);
-        GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
-        questionImage.tag = questionTag;
+        
         yield return null;
         Debug.Log("Waited4img");
         Renderer rend = questionImage.GetComponent<Renderer>();
@@ -201,6 +185,4 @@ public class GetData : MonoBehaviour
         
         
     }
-=======
->>>>>>> parent of 607abb8 (Got images assigned to instantiated objects)
 }
