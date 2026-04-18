@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GetData : MonoBehaviour
 {
@@ -33,9 +32,9 @@ public class GetData : MonoBehaviour
     public GameObject questionImage;
     public DownloadImage downloadedImage;
     public GameObject[] imageInstances;
-    public Material material;
+    public Material imgmaterial;
     public Color color;
-    public Renderer meshRenderer;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,7 +91,7 @@ public class GetData : MonoBehaviour
                 string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value; //assigns wrong answer2 to string
                 string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value; //assigns wrong answer3 to string
 
-                position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
+                Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
                 GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
                 TextMeshPro textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
                 switch (txtcounter) //switch statement for instances of answers from txtcounter
@@ -126,27 +125,25 @@ public class GetData : MonoBehaviour
                 GameObject qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
                 qBox.tag = questionTag;
 
+                if (imgcounter >= answersInstances.Length)
+                {
+                    imgcounter = 0; //counter should be numOfAnswers
+                }
 
+                GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
+                downloadedImage.ImageStart();
+                imgmaterial = questionImage.GetComponent<Renderer>().material;
+                color = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
+                imgmaterial.color = color;
+                //mainTexture = downloadedImage.texture;
                 
-                StartCoroutine(AddImage());
+
+
+
+
+
+                questionImage.tag = questionTag;
                 counter++;
-                //material = questionImage.GetComponent<Renderer>().material;
-
-                //meshRenderer = questionImage.GetComponent<Renderer>();
-                //meshRenderer.material.SetTexture("_MainTexture",downloadedImage)
-                //meshRenderer.material.mainTexture = downloadedImage.texture;
-                //color = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
-                //material.color = color; //tjis line need to change material/////////////////
-                //questionImage.GetComponent<Renderer>().material = downloadedImage.texture;
-                
-
-                
-
-
-
-
-
-
 
             }
             Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (3.0f)); //creates new vector with random range in parameters
@@ -154,6 +151,7 @@ public class GetData : MonoBehaviour
             TextMeshPro QUItextcomponent = QuesText.GetComponent<TextMeshPro>(); //finds the text prefab text
             QUItextcomponent.text = questionUI;
             QuesText.tag = questionTag;
+
             currentQuestion++;
         }
         currentQuestion = 0;
@@ -183,6 +181,7 @@ public class GetData : MonoBehaviour
             showUI.UION();
         }
     }
+<<<<<<< HEAD
 
     IEnumerator AddImage()
     {
@@ -202,4 +201,6 @@ public class GetData : MonoBehaviour
         
         
     }
+=======
+>>>>>>> parent of 607abb8 (Got images assigned to instantiated objects)
 }

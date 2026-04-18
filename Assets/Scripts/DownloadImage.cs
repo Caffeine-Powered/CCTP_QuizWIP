@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class DownloadImage : MonoBehaviour
 {
-    public Image imagePlaced;
-    public Renderer objRenderer;
+    [SerializeField] public Image imagePlaced;
+    [SerializeField] public Renderer objRenderer;
+    public Material material;
     public string imageToLoad;
-    public Texture texture;
+    public Texture2D texture;
     public GetData getdata;
-    public Sprite sprite;
-    
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,15 +32,8 @@ public class DownloadImage : MonoBehaviour
         }
         else
         {
-            texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            
-            //Sprite sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height),new Vector2());
-            //imagePlaced.sprite = sprite;
-           // imagePlaced.preserveAspect = true;
-
-            //objRenderer.material.mainTexture = texture;
-            //needs to be a Renderer object
-            Debug.Log("Assigned Material");
+            Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            //getdata.material.material.mainTexture = texture;
         }
     }
 
