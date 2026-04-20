@@ -28,6 +28,12 @@ public class GetData : MonoBehaviour
     public GameObject[] answersInstances;
     public GameObject[] activeObjects;
     public HideShowUI showUI;
+    public bool Continue;
+    public TextMeshPro textComponent;
+    public string correctAnswer;
+    public string wrongAnswer1;
+    public string wrongAnswer2;
+    public string wrongAnswer3;
 
 
     public GameObject questionImage;
@@ -46,6 +52,7 @@ public class GetData : MonoBehaviour
         counter = 0;
         txtcounter = 0;
         currentQuestion = 0;
+        Continue = false;
         
         StartCoroutine(getData());
         downloadedImage = FindObjectOfType<DownloadImage>();
@@ -88,33 +95,20 @@ public class GetData : MonoBehaviour
             for (int a = 0; a < numOfAnswers; a++)  //for loop until a = number of answers
             {
                 
-                string correctAnswer = obj["Questions"][currentQuestion]["Correct Answer"].Value; //assigns correct answer to string
-                string wrongAnswer1 = obj["Questions"][currentQuestion]["Incorrect Answer 1"].Value; //assigns wrong answer1 to string
-                string wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value; //assigns wrong answer2 to string
-                string wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value; //assigns wrong answer3 to string
+                correctAnswer = obj["Questions"][currentQuestion]["Correct Answer"].Value; //assigns correct answer to string
+                wrongAnswer1 = obj["Questions"][currentQuestion]["Incorrect Answer 1"].Value; //assigns wrong answer1 to string
+                wrongAnswer2 = obj["Questions"][currentQuestion]["Incorrect Answer 2"].Value; //assigns wrong answer2 to string
+                wrongAnswer3 = obj["Questions"][currentQuestion]["Incorrect Answer 3"].Value; //assigns wrong answer3 to string
 
+                questionTag = currentQuestion.ToString(); //assigns questionTag string by turning currentquestion int and turning it into a string
                 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
                 GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
-                TextMeshPro textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
-                switch (txtcounter) //switch statement for instances of answers from txtcounter
-                {
-                    case 0:
-                        textComponent.text = correctAnswer; //assigns correct answer
-                        break;
-                    case 1:
-                        textComponent.text = wrongAnswer1;  //assigns wrong answer
-                        break;
-                    case 2:
-                        textComponent.text = wrongAnswer2;  //assigns wrong answer
-                        break;
-                    case 3:
-                        textComponent.text = wrongAnswer3;  //assigns wrong answer
-                        break;
-                }
+                textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
+                StartCoroutine(AddImage());
                 
+                if (Continue = true)
+                {
                 Debug.Log(textComponent.text);
-                txtcounter++; //increments txtcounter
-                questionTag = currentQuestion.ToString(); //assigns questionTag string by turning currentquestion int and turning it into a string
                 myText.tag = questionTag;   //assigns a tag to each new answer text prefab based on what question it was on in the for loop
 
                 //Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f));
@@ -127,11 +121,10 @@ public class GetData : MonoBehaviour
                 qBox = Instantiate (answersInstances[counter], position, Random.rotation); //make a new qbox
                 qBox.tag = questionTag;
 
-
-                
-                StartCoroutine(AddImage());
                 counter++;
-
+                txtcounter++; //increments txtcounter
+                Continue = false;
+                }
             }
             Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (3.0f)); //creates new vector with random range in parameters
             GameObject QuesText = Instantiate(QUIText, Qposition, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
@@ -171,20 +164,51 @@ public class GetData : MonoBehaviour
 
     IEnumerator AddImage()
     {
+        switch (txtcounter) //switch statement for instances of answers from txtcounter
+        {
+            case 0:
+                textComponent.text = correctAnswer; //assigns correct answer
+                downloadedImage.imageToLoad = correctAnswer;
+
+
+                break;
+            case 1:
+                textComponent.text = wrongAnswer1;  //assigns wrong answer
+                downloadedImage.imageToLoad = wrongAnswer1;
+
+                break;
+            case 2:
+                textComponent.text = wrongAnswer2;  //assigns wrong answer
+                downloadedImage.imageToLoad = wrongAnswer2;
+
+                break;
+            case 3:
+                textComponent.text = wrongAnswer3;  //assigns wrong answer
+                downloadedImage.imageToLoad = wrongAnswer3;
+               // downloadedImage.ImageStart();
+                //StartCoroutine(AddImage());
+                break;
+        }
+        yield return StartCoroutine(downloadedImage.LoadImage(downloadedImage.imageToLoad));
+        Texture tex = downloadedImage.texture;
         if (imgcounter >= answersInstances.Length)
         {
             imgcounter = 0; //counter should be numOfAnswers
         }
-        downloadedImage.ImageStart();
         Debug.Log("position used: " + position);
         GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
         questionImage.tag = questionTag;
-        yield return new WaitForSeconds(1);
-        Debug.Log("Waited4img");
+        yield return new WaitForSeconds(2);      
         Renderer rend = questionImage.GetComponent<Renderer>();
-        //rend.material = new Material(rend.material);
-        rend.material.SetTexture("_BaseMap",downloadedImage.texture);
-        
-        
+        rend.material = new Material(rend.material);
+        rend.material.SetTexture("_BaseMap",tex);
+        Debug.Log("Loaded Material");
+        Debug.Log(textComponent.text);
+        Continue = true;
     }
+
+
+
+
+
 }

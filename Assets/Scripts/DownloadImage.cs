@@ -16,7 +16,7 @@ public class DownloadImage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void ImageStart()
     {
-        imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
+        //imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
         StartCoroutine(LoadImage(imageToLoad));
     }
 
@@ -28,6 +28,7 @@ public class DownloadImage : MonoBehaviour
         if(www.result != UnityWebRequest.Result.Success)
         {
             Debug.Log(www.error);
+
         }
         else
         {
