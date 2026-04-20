@@ -107,7 +107,7 @@ public class GetData : MonoBehaviour
                 GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
                 textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
                 imagesLoaded++;
-                StartCoroutine(AddImage(position));
+                StartCoroutine(AddImage(position, questionTag));
                 
 
                 Debug.Log(textComponent.text);
@@ -162,7 +162,7 @@ public class GetData : MonoBehaviour
         }
     }
 
-    IEnumerator AddImage(Vector3 spawnPosition)
+    IEnumerator AddImage(Vector3 spawnPosition, string questionTag)
     {
         switch (txtcounter) //switch statement for instances of answers from txtcounter
         {
