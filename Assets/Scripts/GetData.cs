@@ -34,6 +34,7 @@ public class GetData : MonoBehaviour
     public string wrongAnswer1;
     public string wrongAnswer2;
     public string wrongAnswer3;
+    public int imagesLoaded; 
 
 
     public GameObject questionImage;
@@ -53,6 +54,7 @@ public class GetData : MonoBehaviour
         txtcounter = 0;
         currentQuestion = 0;
         Continue = false;
+        imagesLoaded = 0;
         
         StartCoroutine(getData());
         downloadedImage = FindObjectOfType<DownloadImage>();
@@ -104,16 +106,14 @@ public class GetData : MonoBehaviour
                 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
                 GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
                 textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
-                StartCoroutine(AddImage());
+                imagesLoaded++;
+                StartCoroutine(AddImage(position));
                 
-                if (Continue = true)
-                {
+
                 Debug.Log(textComponent.text);
                 myText.tag = questionTag;   //assigns a tag to each new answer text prefab based on what question it was on in the for loop
 
-                //Vector3 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f));
-                
-                //Debug.Log(txtcounter);
+
                 if (counter >= answersInstances.Length)
                 {
                     counter = 0; //counter should be numOfAnswers
@@ -123,8 +123,8 @@ public class GetData : MonoBehaviour
 
                 counter++;
                 txtcounter++; //increments txtcounter
-                Continue = false;
-                }
+                //Continue = false;
+               // }
             }
             Qposition = new Vector3((0.0f), (0.0f)  + 100.0f, (3.0f)); //creates new vector with random range in parameters
             GameObject QuesText = Instantiate(QUIText, Qposition, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
@@ -137,7 +137,7 @@ public class GetData : MonoBehaviour
         currentQuestion = 0;
         Debug.Log("currentQuestion: " + currentQuestion);
         Debug.Log(currentQuestion.ToString());
-        DisableQuestions();
+       
 
     }
 
@@ -162,7 +162,7 @@ public class GetData : MonoBehaviour
         }
     }
 
-    IEnumerator AddImage()
+    IEnumerator AddImage(Vector3 spawnPosition)
     {
         switch (txtcounter) //switch statement for instances of answers from txtcounter
         {
@@ -195,8 +195,9 @@ public class GetData : MonoBehaviour
         {
             imgcounter = 0; //counter should be numOfAnswers
         }
+        position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
         Debug.Log("position used: " + position);
-        GameObject questionImage = Instantiate (imageInstances[imgcounter], position, Random.rotation);
+        GameObject questionImage = Instantiate (imageInstances[imgcounter], spawnPosition, Random.rotation);
         questionImage.tag = questionTag;
         yield return new WaitForSeconds(2);      
         Renderer rend = questionImage.GetComponent<Renderer>();
@@ -204,7 +205,12 @@ public class GetData : MonoBehaviour
         rend.material.SetTexture("_BaseMap",tex);
         Debug.Log("Loaded Material");
         Debug.Log(textComponent.text);
-        Continue = true;
+        //Continue = true;
+        imagesLoaded--;
+        if (imagesLoaded == 0)
+        {
+            DisableQuestions();
+        }
     }
 
 
