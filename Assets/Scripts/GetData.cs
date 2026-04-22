@@ -102,14 +102,14 @@ public class GetData : MonoBehaviour
 
                 questionTag = currentQuestion.ToString(); //assigns questionTag string by turning currentquestion int and turning it into a string
                 position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(0.0f, 4.0f)  + 100.0f, Random.Range(-4.0f, 4.0f)); //creates new vector with random range in parameters
-                GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
-                textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
+                //GameObject myText = Instantiate(QText, position, Quaternion.identity);  //instantiates new game object for answer text from the answer text prefab
+                //textComponent = myText.GetComponent<TextMeshPro>(); //finds the text prefab text
                 imagesLoaded++; //increments images loaded counter
                 StartCoroutine(AddImage(position, questionTag)); //starts coroutine for downloading and instantiating images with position and questiontag fed in
                 
 
-                Debug.Log(textComponent.text);  //prints the text for each textcomponent on each loop in console
-                myText.tag = questionTag;   //assigns a tag to each new answer text prefab based on what question it was on in the for loop
+                //Debug.Log(textComponent.text);  //prints the text for each textcomponent on each loop in console
+                //myText.tag = questionTag;   //assigns a tag to each new answer text prefab based on what question it was on in the for loop
 
 
                 if (counter >= answersInstances.Length) //of the counter exceeds or is equal to the number of answers
@@ -161,19 +161,19 @@ public class GetData : MonoBehaviour
         switch (txtcounter) //switch statement for instances of answers from txtcounter
         {   
             case 0: //if txtcounter = 0
-                textComponent.text = correctAnswer; //assigns correct answer to the textcomponent of the answer text
+                //textComponent.text = correctAnswer; //assigns correct answer to the textcomponent of the answer text
                 downloadedImage.imageToLoad = correctAnswer; //assigns the correct answer image to the image to load
                 break; //breaks from switch statement
             case 1: //if txtcounter = 1
-                textComponent.text = wrongAnswer1;  //assigns wrong answer
+                //textComponent.text = wrongAnswer1;  //assigns wrong answer
                 downloadedImage.imageToLoad = wrongAnswer1; //assigns the wronganswer1 image to the image to load
                 break; //breaks from switch statement
             case 2: //if txtcounter = 2
-                textComponent.text = wrongAnswer2;  //assigns wrong answer
+                //textComponent.text = wrongAnswer2;  //assigns wrong answer
                 downloadedImage.imageToLoad = wrongAnswer2; //assigns the wronganswer2 image to the image to load
                 break; //breaks from switch statement
             case 3: //if txtcounter = 3
-                textComponent.text = wrongAnswer3;  //assigns wrong answer
+                //textComponent.text = wrongAnswer3;  //assigns wrong answer
                 downloadedImage.imageToLoad = wrongAnswer3; //assigns the wronganswer3 image to the image to load
                 break; //breaks from switch statement
         }
@@ -192,7 +192,7 @@ public class GetData : MonoBehaviour
         rend.material = new Material(rend.material); //creates a new material
         rend.material.SetTexture("_BaseMap",tex); //assigns the downloaded image to the material
         Debug.Log("Loaded Material"); //prints loaded material (for debugging)
-        Debug.Log(textComponent.text); //prints the textcomponent text in console (for debugging)
+        //Debug.Log(textComponent.text); //prints the textcomponent text in console (for debugging)
         imagesLoaded--; //decrements from the imagesloaded
         if (imagesLoaded == 0) //when the imagesloaded = 0
         {
