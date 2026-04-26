@@ -9,12 +9,12 @@ public class LookAtCamera : MonoBehaviour
 
     void Start()
     {
-        camera = Camera.main.transform;
+        camera = Camera.main.transform; //finds the maincamera's position
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(camera);
+        transform.LookAt(camera); //makes objects this script is attached to rotate to follow the camera/player
     }
 }

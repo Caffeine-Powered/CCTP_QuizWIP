@@ -7,6 +7,6 @@ public class RestartGame : MonoBehaviour
 {
      public void OnClick()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(1); //Load Active Quiz scene (restarts current scene)
     }
 }

@@ -7,6 +7,6 @@ public class HowToMenu : MonoBehaviour
 {
      public void OnClick()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(3); //change scene to help scene
     }
 }

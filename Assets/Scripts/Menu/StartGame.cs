@@ -8,8 +8,6 @@ public class StartGame : MonoBehaviour
 
      public void OnClick()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(1); //loads active quiz scene
     }
-
-
 }

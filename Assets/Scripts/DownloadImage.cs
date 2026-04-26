@@ -16,25 +16,22 @@ public class DownloadImage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void ImageStart()
     {
-        //imageToLoad = "https://as2.ftcdn.net/jpg/01/71/34/85/1000_F_171348575_B3XRv2OcHir9SjsM9lixthxQqyxBYq0a.jpg";
-        StartCoroutine(LoadImage(imageToLoad));
+        StartCoroutine(LoadImage(imageToLoad)); //runs loadimage coroutine
     }
 
     public IEnumerator LoadImage(string url)
     {
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-        yield return www.SendWebRequest();
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url); //makes webrequest using the URL from the variable
+        yield return www.SendWebRequest();  //sends web request
 
-        if(www.result != UnityWebRequest.Result.Success)
+        if(www.result != UnityWebRequest.Result.Success) //if webrequest not successful
         {
-            Debug.Log(www.error);
-
+            Debug.Log(www.error); //print error message in console
         }
-        else
+        else //else
         {
-            texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            Debug.Log("Assigned Material");
-            //getdata.material.material.mainTexture = texture;
+            texture = ((DownloadHandlerTexture)www.downloadHandler).texture; //converts downloaded image into a texture
+            Debug.Log("Assigned Material"); //prints message in console
         }
     }
 

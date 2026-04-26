@@ -7,6 +7,6 @@ public class ReturnToMenu : MonoBehaviour
 {
      public void OnClick()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(0); //Loads main menu
     }
 }
